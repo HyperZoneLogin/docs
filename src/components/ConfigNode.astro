@@ -1,0 +1,205 @@
+---
+import { render } from "../utils/markdown";
+import type { Data } from "../utils/config";
+
+type Language = "yaml" | "json" | "properties";
+
+interface Props {
+  data: Data;
+  lang?: Language; // defaults to "yaml"
+
+  child?: boolean;
+  path?: string[];
+}
+
+let { data, lang, child, path } = Astro.props;
+path = path ?? [];
+
+const json = lang === "json";
+const separator = lang === "properties" ? "=" : ": ";
+
+interface Default {
+  value: string;
+  inline: boolean;
+}
+const formatDefault = (value?: string): Default => {
+  if (!value) {
+    value = lang === "properties" ? "" : '""';
+  }
+  if (!json && value.length > 2 && value.match(/^\[.+]$/)) {
+    return {
+      value: value
+        .substring(1, value.length - 1)
+        .split(",")
+        .map((i) => ` - ${i.trim()}`)
+        .join("\n"),
+      inline: false,
+    };
+  }
+
+  return { value, inline: true };
+};
+---
+
+<div class:list={["not-content", "node", json && "node-json", child || "node-root"]}>
+  {json && <p class="muted">{"{"}</p>}
+  {
+    Object.entries(data).map(([key, rawValue], i, entries) => {
+      let displayKey = key.replace(/_+$/, ""); // remove trailing underscores, used for duplicating keys
+      if (json) {
+        displayKey = `"${displayKey}"`;
+      }
+
+      const childPath = [...path, key.replace(/[-<> ]/g, "_")];
+      const hasComma = json && i !== (entries.length - 1);
+
+      const { value, inline } = formatDefault(rawValue.default);
+      return (
+        <section id={childPath.join("_")}>
+          {"message" in rawValue ? (
+            <div
+              class:list={["block", "message", rawValue.inline && "message-inline"]}
+              style={rawValue.color ? `border-left-color: ${rawValue.color}` : undefined}
+              set:html={render(rawValue.message)}
+            />
+          ) : "description" in rawValue ? (
+            <details>
+              <summary class="line line-leaf notranslate" translate="no">
+                <span class="key key-leaf">{displayKey}</span><span class="muted">{separator}</span>{
+                  inline
+                    ? (<span class="value">{value}</span><>{hasComma && <span class="muted">,</span>}</><a class="link link-inline" href={`#${childPath.join("_")}`}>#</a>)
+                    : (<a class="link" href={`#${childPath.join("_")}`}>#</a><p class="value">{value}</p><>{hasComma && <span class="muted">,</span>}</>)
+                }
+              </summary>
+              <div class="block" set:html={render(rawValue.description)} />
+            </details>
+          ) : (
+            <div class="line notranslate" translate="no">
+              <span class="key">{displayKey}</span><span class="muted">{separator}</span><a class="link" href={`#${childPath.join("_")}`}>#</a>
+            </div>
+            <Astro.self child data={rawValue} path={childPath} {lang} />
+          )}
+        </section>
+      );
+    })
+  }
+  {json && <p class="muted">{"}"}</p>}
+</div>
+
+<style>
+  section:target {
+    padding: 0.25rem 0;
+    border-image: conic-gradient(oklch(from var(--sl-color-accent) l c h / 0.1) 0, oklch(from var(--sl-color-accent) l c h / 0.1) 0) fill 0/0/0 100vw;
+  }
+
+  .node {
+    padding-left: 1.25rem;
+    font-size: var(--sl-text-xs);
+    font-family: var(--__sl-font-mono);
+  }
+
+  .node-json {
+    padding-left: 0;
+  }
+
+  .node-json > section {
+    padding-left: 1.25rem;
+  }
+
+  .node-root {
+    padding: 1rem;
+    border: 1px solid var(--sl-color-gray-5);
+    background-color: var(--sl-color-gray-6);
+    contain: paint;
+  }
+
+  .line {
+    word-break: break-all;
+  }
+
+  .line-leaf {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .key {
+    white-space: pre-wrap;
+    color: var(--sl-color-gray-3);
+  }
+
+  .key-leaf {
+    color: var(--sl-color-text-accent);
+  }
+
+  .value {
+    white-space: pre-wrap;
+    color: var(--sl-color-text);
+  }
+
+  .block {
+    margin: 0.5rem 0 0.5rem 1.25rem;
+    padding: 0.75rem;
+    line-height: 1.5;
+    color: var(--sl-color-white);
+    background-color: var(--sl-color-gray-5);
+    border: 1px solid var(--sl-color-gray-4);
+    border-left: 5px solid var(--sl-color-bg-accent);
+  }
+
+  .message {
+    margin-left: 0;
+  }
+
+  .message-inline {
+    margin: 0;
+    padding: 0;
+    color: var(--sl-color-gray-3);
+    background-color: unset;
+    border: none;
+  }
+
+  .muted {
+    color: var(--sl-color-gray-3);
+  }
+
+  .link,
+  .link:visited {
+    color: var(--sl-color-accent-high);
+    transition: opacity 0.2s ease;
+  }
+
+  .link-inline {
+    padding-left: 0.5rem;
+  }
+
+  @media not (hover: none) {
+    .link {
+      opacity: 0;
+    }
+
+    .line:hover .link {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  window.addEventListener("load", () => {
+    const hash = window.location.hash.slice(1);
+    if (!hash) {
+      return;
+    }
+
+    const el = document.getElementById(hash);
+    if (!el) {
+      return;
+    }
+
+    const details = el.querySelector(":scope > details") as HTMLDetailsElement | null;
+    if (details) {
+      details.open = true;
+    }
+
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+</script>
