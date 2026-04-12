@@ -1,3 +1,4 @@
+import cloudflare from "@astrojs/cloudflare";
 import starlight from "@astrojs/starlight";
 import svelte from "@astrojs/svelte";
 import d2 from "astro-d2";
@@ -5,6 +6,8 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
+  output: "server",
+  adapter: cloudflare(),
   integrations: [
     // Save Markdown renderer configuration to globals for use by the on-demand renderer.
     {

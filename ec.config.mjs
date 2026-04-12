@@ -14,6 +14,9 @@ export default {
   },
   emitExternalStylesheet: false,
   shiki: {
+    langAlias: {
+      hocon: "ini",
+    },
     langs: [miniMessageHighlight],
   },
 };

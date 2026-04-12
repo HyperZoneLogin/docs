@@ -12,6 +12,7 @@
     "format:check": "prettier . --check"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.1.8",
     "@astrojs/markdown-remark": "^7.0.1",
     "@astrojs/starlight": "^0.38.2",
     "@astrojs/svelte": "^8.0.3",
@@ -39,7 +40,8 @@
     "prettier": "3.8.1",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-organize-imports": "^4.3.0",
-    "prettier-plugin-svelte": "^3.5.1"
+    "prettier-plugin-svelte": "^3.5.1",
+    "wrangler": "^4.81.1"
   },
   "engines": {
     "node": ">=22.x"
