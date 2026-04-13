@@ -27,35 +27,51 @@ export default defineConfig({
         "@fontsource/jetbrains-mono/600.css",
         "./src/styles/custom.css",
       ],
+      components: {
+        PageFrame: "./src/components/overrides/PageFrame.astro",
+        Sidebar: "./src/components/overrides/Sidebar.astro",
+      },
       sidebar: [
         {
-          label: "导航",
-          items: [{ label: "首页", link: "/" }],
+          label: "Navigation",
+          collapsed: true,
+          items: ["index", "manual/en", "manual/ru", "manual/zh", "developer"],
         },
         {
           label: "User Manual (EN)",
+          collapsed: false,
           items: ["manual/en"],
         },
         {
-          label: "Руководство (RU)",
+          label: "User Manual (RU)",
+          collapsed: false,
           items: ["manual/ru"],
         },
         {
-          label: "用户手册 (ZH)",
+          label: "User Manual (ZH)",
+          collapsed: false,
           items: [
             "manual/zh",
-            "用户手册/0概要",
-            "用户手册/1服务器基础配置",
-            "用户手册/2模块介绍",
-            "用户手册/3基础安装",
-            "用户手册/4配置摘要",
-            "用户手册/5问题反馈",
-            "用户手册/6常见问题",
-            "用户手册/需要补充",
+            {
+              label: "Getting Started",
+              collapsed: true,
+              items: ["manual/zh/0概要", "manual/zh/1服务器基础配置", "manual/zh/2模块介绍", "manual/zh/3基础安装"],
+            },
+            {
+              label: "Operations",
+              collapsed: true,
+              items: ["manual/zh/4配置摘要", "manual/zh/5问题反馈", "manual/zh/6常见问题"],
+            },
+            {
+              label: "Backlog",
+              collapsed: true,
+              items: ["manual/zh/需要补充"],
+            },
           ],
         },
         {
           label: "Developer Docs",
+          collapsed: false,
           items: ["developer"],
         },
       ],

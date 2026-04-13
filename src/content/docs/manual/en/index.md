@@ -12,7 +12,6 @@ This section is the English user manual entry for HyperZoneLogin.
 The full Chinese manual is currently the most complete version. English chapters are being expanded.
 
 - Chinese complete guide: [`/manual/zh/`](/manual/zh/)
-- Legacy chapter list: [`/用户手册/`](/用户手册/)
 
 ## Planned structure
 

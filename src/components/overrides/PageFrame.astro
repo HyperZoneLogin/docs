@@ -1,8 +1,25 @@
 ---
 import MobileMenuToggle from "@astrojs/starlight/components/MobileMenuToggle.astro";
-import TopicsDropdown from "starlight-sidebar-topics-dropdown/TopicsDropdown.astro";
 
 const { hasSidebar } = Astro.locals.starlightRoute;
+const currentPath = Astro.url.pathname;
+const docGroups = [
+  { label: "Home", href: "/" },
+  { label: "User Manual (EN)", href: "/manual/en/" },
+  { label: "User Manual (RU)", href: "/manual/ru/" },
+  { label: "User Manual (ZH)", href: "/manual/zh/" },
+  { label: "Developer Docs", href: "/developer/" },
+];
+
+const isGroupActive = (href: string) => {
+  if (href === "/") {
+    return currentPath === "/";
+  }
+
+  return currentPath === href || currentPath.startsWith(href) || (href === "/manual/zh/" && currentPath.startsWith("/用户手册/"));
+};
+
+const currentGroup = docGroups.find(({ href }) => isGroupActive(href)) ?? docGroups[0];
 ---
 
 <div class="page sl-flex">
@@ -12,11 +29,19 @@ const { hasSidebar } = Astro.locals.starlightRoute;
       <nav class="sidebar print:hidden" aria-label={Astro.locals.t("sidebarNav.accessibleLabel")}>
         <MobileMenuToggle />
         <div id="starlight__sidebar" class="sidebar-pane">
-          {Astro.locals.starlightSidebarTopics.isPageWithTopic && (
-            <div class="dropdown-wrapper">
-              <TopicsDropdown />
-            </div>
-          )}
+          <div class="dropdown-wrapper">
+            <details class="group-switcher">
+              <summary>
+                <span>{currentGroup.label}</span>
+                <span aria-hidden="true">▾</span>
+              </summary>
+              <div class="group-menu" aria-label="Documentation groups">
+                {docGroups.map(({ label, href }) => (
+                  <a class:list={["group-link", isGroupActive(href) && "is-active"]} href={href}>{label}</a>
+                ))}
+              </div>
+            </details>
+          </div>
           <div class="sidebar-content sl-flex">
             <slot name="sidebar" />
           </div>
@@ -81,21 +106,58 @@ const { hasSidebar } = Astro.locals.starlightRoute;
   }
 
   .dropdown-wrapper {
-    --sl-color-gray-6: oklch(from var(--sl-color-gray-5) calc(l - 0.05) c h);
-
     padding: var(--sl-sidebar-pad-x);
     background-color: var(--sl-color-black);
     border-bottom: 1px solid var(--sl-color-hairline-light);
   }
 
-  :root[data-theme="light"] .dropdown-wrapper {
-    --sl-color-gray-6: oklch(from var(--sl-color-gray-5) calc(l + 0.025) c h);
+  .group-switcher {
+    position: relative;
   }
 
-  /* remove odd margins from dropdown */
-  .dropdown-wrapper :global(.starlight-sidebar-topics-dropdown-dropdown) {
-    width: 100%;
-    margin: 0;
+  .group-switcher summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    cursor: pointer;
+    font-size: var(--sl-text-sm);
+    font-weight: 600;
+    color: var(--sl-color-white);
+    border: 1px solid var(--sl-color-hairline-shade);
+    border-radius: 0.5rem;
+    background-color: var(--sl-color-black);
+    padding: 0.55rem 0.65rem;
+  }
+
+  .group-switcher summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .group-menu {
+    margin-top: 0.35rem;
+    border: 1px solid var(--sl-color-hairline-shade);
+    border-radius: 0.5rem;
+    background-color: var(--sl-color-black);
+    overflow: hidden;
+  }
+
+  .group-link {
+    display: block;
+    padding: 0.5rem 0.65rem;
+    text-decoration: none;
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-sm);
+  }
+
+  .group-link:hover {
+    color: var(--sl-color-white);
+    background-color: var(--sl-color-gray-6);
+  }
+
+  .group-link.is-active {
+    color: var(--sl-color-white);
+    background-color: color-mix(in oklch, var(--sl-color-text-accent) 20%, transparent);
   }
 
   .sidebar-content {

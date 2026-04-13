@@ -1,0 +1,41 @@
+---
+import MobileMenuFooter from "virtual:starlight/components/MobileMenuFooter";
+import SidebarPersister from "@astrojs/starlight/components/SidebarPersister.astro";
+import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
+
+const { sidebar } = Astro.locals.starlightRoute;
+const currentPath = Astro.url.pathname;
+
+const activeGroupLabel = currentPath.startsWith("/manual/en/")
+  ? "User Manual (EN)"
+  : currentPath.startsWith("/manual/ru/")
+    ? "User Manual (RU)"
+    : currentPath.startsWith("/manual/zh/") || currentPath.startsWith("/用户手册/")
+      ? "User Manual (ZH)"
+      : currentPath.startsWith("/developer/")
+        ? "Developer Docs"
+        : null;
+
+const filteredSidebar = sidebar.filter((entry) => {
+  if (entry.type !== "group") {
+    return false;
+  }
+
+  if (!activeGroupLabel) {
+    return entry.label === "Navigation";
+  }
+
+  return entry.label === activeGroupLabel;
+});
+
+const sidebarToRender = filteredSidebar.length > 0 ? filteredSidebar : sidebar;
+---
+
+<SidebarPersister>
+  <SidebarSublist sublist={sidebarToRender} />
+</SidebarPersister>
+
+<div class="md:sl-hidden">
+  <MobileMenuFooter />
+</div>
+

@@ -23,3 +23,6 @@
 /adventure/version-history/adventure-platform-fabric /adventure/version-history/adventure-platform-mod
 /misc/downloads-api/ /misc/downloads-service/
 /misc/downloads-api /misc/downloads-service/
+/用户手册 /manual/zh 301
+/用户手册/ /manual/zh/ 301
+/用户手册/* /manual/zh/:splat 301
