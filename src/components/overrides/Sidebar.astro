@@ -6,29 +6,33 @@ import SidebarSublist from "@astrojs/starlight/components/SidebarSublist.astro";
 const { sidebar } = Astro.locals.starlightRoute;
 const currentPath = Astro.url.pathname;
 
-const activeGroupLabel = currentPath.startsWith("/manual/en/")
-  ? "User Manual (EN)"
+const activeGroupKey = currentPath.startsWith("/manual/en/")
+  ? "en"
   : currentPath.startsWith("/manual/ru/")
-    ? "User Manual (RU)"
+    ? "ru"
     : currentPath.startsWith("/manual/zh/") || currentPath.startsWith("/用户手册/")
-      ? "User Manual (ZH)"
+      ? "zh"
       : currentPath.startsWith("/developer/")
-        ? "Developer Docs"
-        : null;
+        ? "developer"
+        : "navigation";
+
+const groupLabelsByKey: Record<string, string[]> = {
+  navigation: ["Navigation"],
+  en: ["User Manual (EN)"],
+  ru: ["Руководство пользователя (RU)", "User Manual (RU)"],
+  zh: ["用户手册 (ZH)", "User Manual (ZH)"],
+  developer: ["Developer Docs"],
+};
 
 const filteredSidebar = sidebar.filter((entry) => {
   if (entry.type !== "group") {
     return false;
   }
 
-  if (!activeGroupLabel) {
-    return entry.label === "Navigation";
-  }
-
-  return entry.label === activeGroupLabel;
+  return groupLabelsByKey[activeGroupKey]?.includes(entry.label) ?? false;
 });
 
-const sidebarToRender = filteredSidebar.length > 0 ? filteredSidebar : sidebar;
+const sidebarToRender = filteredSidebar.length > 0 ? filteredSidebar : sidebar.filter((entry) => entry.type === "group" && entry.label === "Navigation");
 ---
 
 <SidebarPersister>

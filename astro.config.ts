@@ -43,27 +43,33 @@ export default defineConfig({
           items: ["manual/en"],
         },
         {
-          label: "User Manual (RU)",
+          label: "Руководство пользователя (RU)",
           collapsed: false,
           items: ["manual/ru"],
         },
         {
-          label: "User Manual (ZH)",
+          label: "用户手册 (ZH)",
           collapsed: false,
           items: [
             "manual/zh",
             {
-              label: "Getting Started",
+              label: "入门",
               collapsed: true,
-              items: ["manual/zh/0概要", "manual/zh/1服务器基础配置", "manual/zh/2模块介绍", "manual/zh/3基础安装"],
+              items: [
+                "manual/zh/概要",
+                "manual/zh/快速上手",
+                "manual/zh/服务器基础配置",
+                "manual/zh/模块介绍",
+                "manual/zh/基础安装",
+              ],
             },
             {
-              label: "Operations",
+              label: "运维",
               collapsed: true,
-              items: ["manual/zh/4配置摘要", "manual/zh/5问题反馈", "manual/zh/6常见问题"],
+              items: ["manual/zh/配置摘要", "manual/zh/问题反馈", "manual/zh/常见问题"],
             },
             {
-              label: "Backlog",
+              label: "待补充",
               collapsed: true,
               items: ["manual/zh/需要补充"],
             },
