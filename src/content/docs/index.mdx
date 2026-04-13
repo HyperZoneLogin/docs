@@ -1,18 +1,35 @@
 ---
-title: HyperZoneLogin 文档
-description: HyperZoneLogin 项目文档入口。
+title: HyperZoneLogin Docs
+description: HyperZoneLogin 文档总入口，包含英文、俄文、中文用户手册和开发者文档。
+template: splash
+editUrl: false
+lastUpdated: false
+hero:
+  title: HyperZoneLogin Docs
+  tagline: 选择你要阅读的文档类型与语言。
 ---
 
-# HyperZoneLogin 文档
+import { CardGrid } from "@astrojs/starlight/components";
+import LinkCard from "/src/components/LinkCard.astro";
 
-当前站点仅保留 HyperZoneLogin 文档内容，主要章节为用户手册。
+<CardGrid>
+  <LinkCard title="User Manual (EN)" href="/manual/en/">
+    English user guide for server owners and operators.
+  </LinkCard>
+  <LinkCard title="Руководство пользователя (RU)" href="/manual/ru/">
+    Русскоязычное руководство пользователя по установке и эксплуатации.
+  </LinkCard>
+  <LinkCard title="用户手册 (ZH)" href="/manual/zh/">
+    中文用户手册，包含完整章节导读与详细操作说明。
+  </LinkCard>
+  <LinkCard title="Developer Docs" href="/developer/">
+    Development-focused docs for APIs, modules, architecture and contribution workflow.
+  </LinkCard>
+</CardGrid>
 
-- 进入用户手册：[`用户手册`](/用户手册/)
-- 按章节阅读：
-  - [`0 概要`](/用户手册/0概要/)
-  - [`1 服务器基础配置`](/用户手册/1服务器基础配置/)
-  - [`2 模块介绍`](/用户手册/2模块介绍/)
-  - [`3 基础安装`](/用户手册/3基础安装/)
-  - [`4 配置摘要`](/用户手册/4配置摘要/)
-  - [`5 问题反馈`](/用户手册/5问题反馈/)
-  - [`6 常见问题`](/用户手册/6常见问题/)
+## Quick Start
+
+- Read Chinese full guide: [`用户手册`](/用户手册/)
+- Jump to English guide: [`/manual/en/`](/manual/en/)
+- Jump to Russian guide: [`/manual/ru/`](/manual/ru/)
+- Jump to developer docs: [`/developer/`](/developer/)

@@ -29,9 +29,21 @@ export default defineConfig({
       ],
       sidebar: [
         {
-          label: "用户手册",
+          label: "导航",
+          items: [{ label: "首页", link: "/" }],
+        },
+        {
+          label: "User Manual (EN)",
+          items: ["manual/en"],
+        },
+        {
+          label: "Руководство (RU)",
+          items: ["manual/ru"],
+        },
+        {
+          label: "用户手册 (ZH)",
           items: [
-            "用户手册",
+            "manual/zh",
             "用户手册/0概要",
             "用户手册/1服务器基础配置",
             "用户手册/2模块介绍",
@@ -41,6 +53,10 @@ export default defineConfig({
             "用户手册/6常见问题",
             "用户手册/需要补充",
           ],
+        },
+        {
+          label: "Developer Docs",
+          items: ["developer"],
         },
       ],
     }),
