@@ -1,0 +1,20 @@
+auth-offline:
+  description: |
+    是否启用内置的离线认证模块。
+  default: true
+auth-yggd:
+  description: |
+    是否启用基于Yggdrasil的在线认证模块。
+  default: true
+data-merge:
+  description: |
+    是否启用数据迁移模块。
+  default: "false"
+profile-skin:
+  description: |
+    是否启用玩家皮肤缓存模块。
+  default: true
+safe:
+  description: |
+    是否启用内置的简易安全模块，提供基本的反假人功能。
+  default: true

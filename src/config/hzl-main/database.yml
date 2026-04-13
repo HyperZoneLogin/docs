@@ -1,0 +1,86 @@
+type:
+  description: |
+    数据库类型。
+
+    支持的值：`SQLITE`, `MYSQL`, `MARIADB`。
+  default: SQLITE
+sqlite:
+  path:
+    description: |
+      SQLite数据库文件的路径（相对于插件数据目录）。
+    default: "data/hyperzone_login.db"
+mariadb:
+  host:
+    description: |
+      MariaDB服务器的主机地址。
+    default: localhost
+  port:
+    description: |
+      MariaDB服务器端口。
+    default: 3306
+  database:
+    description: |
+      用于HyperZoneLogin的MariaDB数据库名称。
+    default: "hyperzone_login"
+  username:
+    description: |
+      连接MariaDB服务器的用户名。
+    default: root
+  password:
+    description: |
+      连接MariaDB服务器的密码。
+    default: password
+  driver-class-name:
+    description: |
+      ⚠️MariaDB JDBC驱动类名。通常不需要修改。
+    default: "org.mariadb.jdbc.Driver"
+mysql:
+  host:
+    description: |
+      MySQL服务器的主机地址。
+    default: localhost
+  port:
+    description: |
+      MySQL服务器端口。
+    default: 3306
+  database:
+    description: |
+      用于HyperZoneLogin的MySQL数据库名称。
+    default: "hyperzone_login"
+  username:
+    description: |
+      连接MySQL服务器的用户名。
+    default: root
+  password:
+    description: |
+      连接MySQL服务器的密码。
+    default: password
+  parameters:
+    description: |
+      ⚠️连接MySQL服务器的JDBC参数，格式为URL查询字符串。
+    default: "useSSL=false&serverTimezone=UTC&characterEncoding=utf8"
+  driver-class-name:
+    description: |
+      ⚠️MySQL JDBC驱动类名。通常不需要修改。
+    default: "com.mysql.cj.jdbc.Driver"
+pool:
+  connection-timeout:
+    description: |
+      ⚠️连接的超时时间（毫秒）。
+    default: 30000
+  idle-timeout:
+    description: |
+      ⚠️空闲连接超时时间（毫秒）。
+    default: 600000
+  max-lifetime:
+    description: |
+      ⚠️连接的最大生命周期（毫秒）。
+    default: 1800000
+  maximum-pool-size:
+    description: |
+      ⚠️连接池的最大连接数。
+    default: 10
+  minimum-idle:
+    description: |
+      ⚠️连接池的最小空闲连接数。
+    default: 2

@@ -1,0 +1,12 @@
+default-locale:
+  description: |
+    默认语言。当未启用客户端语言检测，或客户端语言没有对应语言文件时使用。
+  default: zh_cn
+fallback-locale:
+  description: |
+    消息缺失时的回退语言。
+  default: en_us
+use-client-locale:
+  description: |
+    是否优先尝试读取客户端语言；若失败则回退到 defaultLocale 指定的语言。
+  default: true
