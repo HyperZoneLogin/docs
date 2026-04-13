@@ -66,7 +66,12 @@ export default defineConfig({
             {
               label: "运维",
               collapsed: true,
-              items: ["manual/zh/配置摘要", "manual/zh/问题反馈", "manual/zh/常见问题"],
+              items: [
+                "manual/zh/配置摘要", 
+                "manual/zh/迁移数据",
+                "manual/zh/常见问题", 
+                "manual/zh/问题反馈"
+              ],
             },
             {
               label: "待补充",
