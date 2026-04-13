@@ -3,8 +3,6 @@ title: 用户手册 (ZH)
 description: HyperZoneLogin 中文用户手册入口。
 ---
 
-# 用户手册 (ZH)
-
 这是中文用户手册入口页。
 
 ## 完整章节
@@ -24,4 +22,3 @@ description: HyperZoneLogin 中文用户手册入口。
 - English: [`/manual/en/`](/manual/en/)
 - Русский: [`/manual/ru/`](/manual/ru/)
 - Developer Docs: [`/developer/`](/developer/)
-
