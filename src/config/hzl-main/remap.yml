@@ -1,0 +1,3 @@
+prefix:
+  description: "⚠️生成UUID时的前缀，如果是OfflinePlayer则为离线生成方式"
+  default: HyperZone

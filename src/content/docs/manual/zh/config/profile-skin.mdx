@@ -1,0 +1,11 @@
+---
+title: "profile-skin.conf"
+---
+
+import ConfigNode from "/src/components/ConfigNode.astro";
+import ThisConfigData from "/src/config/profile-skin/profile-skin.yml?raw";
+import { parse } from "yaml";
+
+指定玩家皮肤缓存的配置。
+
+<ConfigNode data={parse(ThisConfigData)} />

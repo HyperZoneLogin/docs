@@ -1,0 +1,34 @@
+advanced:
+  no-entry-notice:
+    color: gray
+    message: "暂无配置项。"
+enable:
+  description: |-
+    是否允许进行匹配
+  default: true
+host-match:
+  start:
+    description: Host 匹配的前缀列表
+    default: "[offline, o-]"
+uuid-match:
+  offline:
+    description: |-
+      是否允许默认uuid生成方法 匹配为离线
+    default: true
+  pcl2:
+    enable:
+      description: |-
+        PCL2的UUID匹配
+      default: true
+    hash:
+      description: |-
+        PCL2的UUID进行哈希计算匹配
+      default: true
+    slim:
+      description: |-
+        PCL2的苗条模型UUID匹配
+      default: true
+  zero:
+    description: |-
+      是否允许全0的UUID(Zalith) 匹配为离线
+    default: true

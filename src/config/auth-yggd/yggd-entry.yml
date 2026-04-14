@@ -1,0 +1,50 @@
+id:
+  description: |-
+    此验证服务的 ID(无论大小写，到数据库会变成小写)，用于识别验证服务的唯一标识。**必须保持唯一。**
+  default: Example
+name:
+  description: |-
+    验证服务的别称，用于一些指令结果或其他用途的内容显示
+  default: Unnamed
+yggdrasil:
+  proxy:
+    hostname:
+      description: |-
+        代理服务器地址
+      default: 127.0.0.1
+    password:
+      description: |-
+        代理鉴权密码
+      default: ""
+    port:
+      description: |-
+        代理服务器端口
+      default: 1080
+    type:
+      description: |-
+        设置代理类型  
+        DIRECT - 直接连接、或没有代理  
+        HTTP - 表示高级协议(如HTTP或FTP)的代理  
+        SOCKS - 表示一个SOCKS (V4或V5)代理
+      default: DIRECT
+    username:
+      description: |-
+        代理鉴权用户名，留空则不进行鉴权
+      default: ""
+  retry:
+    description: |-
+      网络错误时的重试次数
+    default: "0"
+  retry-delay:
+    description: |-
+      重试请求延迟（毫秒）
+    default: "0"
+  timeout:
+    description: |-
+      验证请求超时时间（毫秒）
+    default: 10000
+  url:
+    description: |-
+      Yggdrasil hasJoined 验证 URL  
+      在hasJoined URL后面还需要添加参数 `?username={username}&serverId={serverId}{ip}` 进行验证请求
+    default: ""

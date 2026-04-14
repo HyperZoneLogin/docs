@@ -32,7 +32,10 @@ const filteredSidebar = sidebar.filter((entry) => {
   return groupLabelsByKey[activeGroupKey]?.includes(entry.label) ?? false;
 });
 
-const sidebarToRender = filteredSidebar.length > 0 ? filteredSidebar : sidebar.filter((entry) => entry.type === "group" && entry.label === "Navigation");
+const sidebarToRender =
+  filteredSidebar.length > 0
+    ? filteredSidebar
+    : sidebar.filter((entry) => entry.type === "group" && entry.label === "Navigation");
 ---
 
 <SidebarPersister>
@@ -42,4 +45,3 @@ const sidebarToRender = filteredSidebar.length > 0 ? filteredSidebar : sidebar.f
 <div class="md:sl-hidden">
   <MobileMenuFooter />
 </div>
-

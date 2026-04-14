@@ -1,0 +1,11 @@
+---
+title: "misc.conf"
+---
+
+import ConfigNode from "/src/components/ConfigNode.astro";
+import ThisConfigData from "/src/config/hzl-main/misc.yml?raw";
+import { parse } from "yaml";
+
+其他杂项配置。
+
+<ConfigNode data={parse(ThisConfigData)} />

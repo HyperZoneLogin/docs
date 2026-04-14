@@ -16,7 +16,11 @@ const isGroupActive = (href: string) => {
     return currentPath === "/";
   }
 
-  return currentPath === href || currentPath.startsWith(href) || (href === "/manual/zh/" && currentPath.startsWith("/用户手册/"));
+  return (
+    currentPath === href ||
+    currentPath.startsWith(href) ||
+    (href === "/manual/zh/" && currentPath.startsWith("/用户手册/"))
+  );
 };
 
 const currentGroup = docGroups.find(({ href }) => isGroupActive(href)) ?? docGroups[0];
@@ -37,7 +41,9 @@ const currentGroup = docGroups.find(({ href }) => isGroupActive(href)) ?? docGro
               </summary>
               <div class="group-menu" aria-label="Documentation groups">
                 {docGroups.map(({ label, href }) => (
-                  <a class:list={["group-link", isGroupActive(href) && "is-active"]} href={href}>{label}</a>
+                  <a class:list={["group-link", isGroupActive(href) && "is-active"]} href={href}>
+                    {label}
+                  </a>
                 ))}
               </div>
             </details>

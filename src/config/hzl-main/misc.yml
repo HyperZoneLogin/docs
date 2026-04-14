@@ -1,0 +1,12 @@
+debug:
+  description: |
+    是否启用调试模式，启用后会输出更多日志以帮助排查问题。
+  default: true
+enable-replace-game-profile:
+  description: |
+    ⚠️是否启用替换游戏档案功能。
+  default: true
+kill-chat-session:
+  description: |
+    ⚠️是否不给服务器发送 CHAT_SESSION_UPDATE 包。
+  default: true

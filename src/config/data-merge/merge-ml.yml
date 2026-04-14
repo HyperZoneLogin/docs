@@ -1,0 +1,64 @@
+source:
+  type:
+    description: |-
+      源库类型，支持 H2DB 或 MYSQL
+    default: H2DB
+  h2:
+    jdbc-url:
+      description: |-
+        ⚠️可选：直接指定 JDBC URL。留空时按 path + parameters 生成
+      default: ""
+    path:
+      description: |-
+        H2 文件路径（相对于插件数据目录）
+      default: merge/multilogin
+    parameters:
+      description: |-
+        ⚠️H2 JDBC 附加参数
+      default: MODE=MySQL
+    username:
+      description: |-
+        H2 用户名
+      default: root
+    password:
+      description: |-
+        H2 密码
+      default: root
+  mysql:
+    host:
+      description: |-
+        MySQL 地址
+      default: 127.0.0.1
+    port:
+      description: |-
+        MySQL 端口
+      default: 3306
+    database:
+      description: |-
+        数据库名
+      default: mixed_login
+    username:
+      description: |-
+        用户名
+      default: root
+    password:
+      description: |-
+        密码
+      default: password
+    parameters:
+      description: |-
+        ⚠️JDBC 参数
+      default: useSSL=false&serverTimezone=UTC&characterEncoding=utf8
+tables:
+  user-data-table:
+    description: |-
+      ⚠️旧库 UserDataTableV3 的表名
+    default: multilogin_user_data_v3
+  in-game-profile-table:
+    description: |-
+      ⚠️旧库 InGameProfileTableV3 的表名
+    default: multilogin_in_game_profile_v3
+service-id-mapping:
+  description: |-
+    ⚠️服务 ID 映射，键为旧库的服务 ID，值为新库的服务 ID
+  default: '{"1"=mojang}'

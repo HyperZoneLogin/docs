@@ -1,0 +1,11 @@
+---
+title: "database.conf"
+---
+
+import ConfigNode from "/src/components/ConfigNode.astro";
+import ThisConfigData from "/src/config/hzl-main/database.yml?raw";
+import { parse } from "yaml";
+
+指定插件所使用的数据库。
+
+<ConfigNode data={parse(ThisConfigData)} />

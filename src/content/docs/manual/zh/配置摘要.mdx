@@ -1,0 +1,57 @@
+---
+title: "配置摘要"
+---
+
+import ConfigNode from "/src/components/ConfigNode.astro";
+import MainBackendYML from "/src/config/hzl-main/backend-server.yml?raw";
+import MainDatabaseYML from "/src/config/hzl-main/database.yml?raw";
+import MainMessageYML from "/src/config/hzl-main/messages.yml?raw";
+import MainModuleYML from "/src/config/hzl-main/modules.yml?raw";
+import MainMiscYML from "/src/config/hzl-main/misc.yml?raw";
+import MainRemapYML from "/src/config/hzl-main/remap.yml?raw";
+import { parse } from "yaml";
+
+本页面介绍插件所涉及的各种配置文件。
+
+:::danger[危险]
+**部分配置项会直接影响本插件的关键行为，配置不得当的情况下很可能导致插件无法正常工作乃至崩溃。**  
+此类配置项已在对应的描述中添加了“⚠️”作为标识。除非你真的知道你在做什么，否则不要改动这些配置项目。
+:::
+
+## 核心插件
+
+### `backend-server.conf`
+
+指定所需后端服务器的配置。
+
+<ConfigNode data={parse(MainBackendYML)} />
+
+### `database.conf`
+
+指定插件所使用的数据库。
+
+<ConfigNode data={parse(MainDatabaseYML)} />
+
+### `messages.conf`
+
+插件消息的配置文件。具体消息文件位于插件数据目录下的`messages`文件夹，可分别编辑 en_us.conf / zh_cn.conf / ru_ru.conf，或创建新的消息文件。
+
+<ConfigNode data={parse(MainMessageYML)} />
+
+### `modules.conf`
+
+控制插件内置模块的配置文件。若同名外部插件已安装，则自动跳过内置版本。
+
+<ConfigNode data={parse(MainModuleYML)} />
+
+### `misc.conf`
+
+其他杂项配置。
+
+<ConfigNode data={parse(MainMiscYML)} />
+
+### ⚠️`remap.conf`
+
+用于 UUID 映射时使用的配置。
+
+<ConfigNode data={parse(MainRemapYML)} />

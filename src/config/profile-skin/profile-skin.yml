@@ -1,0 +1,41 @@
+enabled:
+  description: |-
+    是否启用 profile-skin 模块
+  default: true
+mine-skin:
+  method:
+    description: |-
+      生成方式：URL 或 UPLOAD
+    default: URL
+  retry-upload-on-url-read-failure:
+    description: |-
+      当 URL 模式返回 remote fetch 类错误（例如 invalid_image / file size undefined）时，是否自动改用上传模式重试
+    default: true
+  timeout-millis:
+    description: |-
+      请求超时时间（毫秒）
+    default: 15000
+  upload-endpoint:
+    description: |-
+      上传模式接口地址
+    default: https://api.mineskin.org/generate/upload
+  url-endpoint:
+    description: |-
+      URL 模式接口地址
+    default: https://api.mineskin.org/generate/url
+  user-agent:
+    description: |-
+      HTTP User-Agent
+    default: HyperZoneLogin/1.0
+prefer-upstream-signed-textures:
+  description: |-
+    是否优先缓存并使用上游已经携带签名的 textures
+  default: true
+restore-unsigned-textures:
+  description: |-
+    当上游 textures 没有签名时，是否尝试通过 MineSkin 修复
+  default: true
+trusted-signed-texture-entries:
+  description: |-
+    仅这些 entryId 的 signed textures 会被直接信任，其他 entry 即使 signed 也会优先尝试修复
+  default: "[mojang]"
