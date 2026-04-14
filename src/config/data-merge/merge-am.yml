@@ -7,7 +7,7 @@ source:
     jdbc-url:
       description: |-
         ⚠️可选：直接指定 JDBC URL。留空时按 path + parameters 生成
-      default: ''
+      default: ""
     path:
       description: |-
         SQLite 文件路径（相对于插件数据目录）
@@ -15,7 +15,7 @@ source:
     parameters:
       description: |-
         ⚠️SQLite JDBC 附加参数
-      default: ''
+      default: ""
   mysql:
     host:
       description: |-

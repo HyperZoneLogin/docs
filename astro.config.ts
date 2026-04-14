@@ -86,12 +86,12 @@ export default defineConfig({
                     "manual/zh/config/merge-am",
                     "manual/zh/config/merge-ml",
                   ],
-                }, 
+                },
                 "manual/zh/迁移数据",
-                "manual/zh/常见问题", 
-                "manual/zh/问题反馈"
+                "manual/zh/常见问题",
+                "manual/zh/问题反馈",
               ],
-            }
+            },
           ],
         },
         {

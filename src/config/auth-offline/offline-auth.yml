@@ -2,7 +2,7 @@ email:
   delivery-mode:
     description: |
       恢复码投递模式：LOG 或 SMTP
-    default: 'LOG'
+    default: "LOG"
   enabled:
     description: |
       是否启用邮箱相关命令
@@ -39,19 +39,19 @@ email:
     from-address:
       description: |
         发件人邮箱
-      default: 'noreply@example.com'
+      default: "noreply@example.com"
     from-name:
       description: |
         发件人名称
-      default: 'HyperZoneLogin'
+      default: "HyperZoneLogin"
     host:
       description: |
         SMTP 服务器地址
-      default: 'smtp.example.com'
+      default: "smtp.example.com"
     password:
       description: |
         SMTP 密码或应用专用密码
-      default: 'change-me'
+      default: "change-me"
     port:
       description: |
         SMTP 端口
@@ -67,11 +67,11 @@ email:
     recovery-subject:
       description: |
         恢复邮件主题，支持占位符：%server%、%player%
-      default: '[%server%] 账号密码找回验证码'
+      default: "[%server%] 账号密码找回验证码"
     server-name:
       description: |
         邮件里显示的服务器名称
-      default: 'HyperZoneLogin'
+      default: "HyperZoneLogin"
     ssl:
       description: |
         是否直接使用 SSL
@@ -83,7 +83,7 @@ email:
     username:
       description: |
         SMTP 用户名
-      default: 'noreply@example.com'
+      default: "noreply@example.com"
     write-timeout-millis:
       description: |
         写入超时（毫秒）
@@ -144,7 +144,7 @@ totp:
   issuer:
     description: |
       在验证器 App 中显示的发行方名称
-    default: 'HyperZoneLogin'
+    default: "HyperZoneLogin"
   pending-expire-minutes:
     description: |
       待确认 TOTP 密钥的有效期（分钟）

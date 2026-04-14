@@ -1,4 +1,4 @@
-fallback-auth-server: 
+fallback-auth-server:
   description: |
     当未安装 limboapi 时，HyperZoneLogin用于认证等待区的后端服务器ID。留空表示禁用。
   default: "lobby"
