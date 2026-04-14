@@ -1,0 +1,11 @@
+---
+title: "messages.conf"
+---
+
+import ConfigNode from "/src/components/ConfigNode.astro";
+import ThisConfigData from "/src/config/hzl-main/messages.yml?raw";
+import { parse } from "yaml";
+
+插件消息的配置文件。具体消息文件位于插件数据目录下的`messages`文件夹，可分别编辑 en_us.conf / zh_cn.conf / ru_ru.conf，或创建新的消息文件。
+
+<ConfigNode data={parse(ThisConfigData)} />

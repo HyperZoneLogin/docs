@@ -1,0 +1,151 @@
+email:
+  delivery-mode:
+    description: |
+      恢复码投递模式：LOG 或 SMTP
+    default: 'LOG'
+  enabled:
+    description: |
+      是否启用邮箱相关命令
+    default: true
+  max-code-verify-attempts:
+    description: |
+      单个恢复码允许输错次数
+    default: 3
+  recovery-code-expire-minutes:
+    description: |
+      恢复码有效期（分钟）
+    default: 15
+  recovery-code-length:
+    description: |
+      恢复码长度
+    default: 6
+  recovery-cooldown-seconds:
+    description: |
+      重复请求恢复邮件冷却（秒）
+    default: 120
+  reset-password-window-minutes:
+    description: |
+      恢复码校验成功后，允许修改密码的时间窗口（分钟）
+    default: 10
+  smtp:
+    auth:
+      description: |
+        是否启用 SMTP 认证
+      default: true
+    connection-timeout-millis:
+      description: |
+        连接超时（毫秒）
+      default: 10000
+    from-address:
+      description: |
+        发件人邮箱
+      default: 'noreply@example.com'
+    from-name:
+      description: |
+        发件人名称
+      default: 'HyperZoneLogin'
+    host:
+      description: |
+        SMTP 服务器地址
+      default: 'smtp.example.com'
+    password:
+      description: |
+        SMTP 密码或应用专用密码
+      default: 'change-me'
+    port:
+      description: |
+        SMTP 端口
+      default: 587
+    read-timeout-millis:
+      description: |
+        读取超时（毫秒）
+      default: 10000
+    recovery-body:
+      description: |
+        恢复邮件正文，支持占位符：%server%、%player%、%email%、%code%、%minutes%。使用 \n 表示换行
+      default: '你好，%player%。\n\n你在 %server% 请求了离线账号密码找回。\n验证码：%code%\n有效期：%minutes% 分钟\n\n如果不是你本人操作，请忽略这封邮件。'
+    recovery-subject:
+      description: |
+        恢复邮件主题，支持占位符：%server%、%player%
+      default: '[%server%] 账号密码找回验证码'
+    server-name:
+      description: |
+        邮件里显示的服务器名称
+      default: 'HyperZoneLogin'
+    ssl:
+      description: |
+        是否直接使用 SSL
+      default: false
+    start-tls:
+      description: |
+        是否启用 STARTTLS
+      default: true
+    username:
+      description: |
+        SMTP 用户名
+      default: 'noreply@example.com'
+    write-timeout-millis:
+      description: |
+        写入超时（毫秒）
+      default: 10000
+login:
+  block-seconds:
+    description: |
+      触发锁定后的冷却秒数
+    default: 300
+  max-attempts:
+    description: |
+      连续输错多少次后临时锁定登录
+    default: 5
+password:
+  deny-name-in-password:
+    description: |
+      是否禁止密码中包含用户名
+    default: true
+  max-length:
+    description: |
+      最长密码长度
+    default: 64
+  min-length:
+    description: |
+      最短密码长度
+    default: 6
+prompt:
+  show-recovery-hint:
+    description: |
+      首次进入认证阶段时是否额外展示邮箱找回提示
+    default: true
+session:
+  bind-ip:
+    description: |
+      是否把会话与玩家 IP 绑定
+    default: true
+  enabled:
+    description: |
+      是否启用短期会话自动登录
+    default: false
+  expire-minutes:
+    description: |
+      会话有效期（分钟）
+    default: 30
+  issue-on-register:
+    description: |
+      注册成功后是否立刻签发会话
+    default: true
+totp:
+  allow-session-bypass:
+    description: |
+      当账号启用 TOTP 时，是否允许 short session 直接绕过二次验证
+    default: false
+  enabled:
+    description: |
+      是否启用 TOTP 二步验证功能
+    default: true
+  issuer:
+    description: |
+      在验证器 App 中显示的发行方名称
+    default: 'HyperZoneLogin'
+  pending-expire-minutes:
+    description: |
+      待确认 TOTP 密钥的有效期（分钟）
+    default: 10

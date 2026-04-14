@@ -1,0 +1,12 @@
+---
+title: "safe.conf"
+slug: "manual/zh/config/safe"
+---
+
+import ConfigNode from "/src/components/ConfigNode.astro";
+import ThisConfigData from "/src/config/safe/safe.yml?raw";
+import { parse } from "yaml";
+
+基础安全模块（`safe`）的配置。
+
+<ConfigNode data={parse(ThisConfigData)} />

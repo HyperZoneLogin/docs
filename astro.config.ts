@@ -67,7 +67,23 @@ export default defineConfig({
               label: "运维",
               collapsed: true,
               items: [
-                "manual/zh/配置摘要", 
+                {
+                  label: "配置索引",
+                  collapsed: true,
+                  items: [
+                    "manual/zh/config/配置列表",
+                    "manual/zh/config/backend-server",
+                    "manual/zh/config/database",
+                    "manual/zh/config/messages",
+                    "manual/zh/config/modules",
+                    "manual/zh/config/misc",
+                    "manual/zh/config/remap",
+                    "manual/zh/config/offline-auth",
+                    "manual/zh/config/offlinematch",
+                    "manual/zh/config/profile-skin",
+                    "manual/zh/config/safe"
+                  ],
+                }, 
                 "manual/zh/迁移数据",
                 "manual/zh/常见问题", 
                 "manual/zh/问题反馈"

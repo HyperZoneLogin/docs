@@ -1,0 +1,37 @@
+---
+title: "配置列表"
+---
+
+import { FileTree } from "@astrojs/starlight/components";
+
+本页面介绍插件所涉及的各种配置文件。
+
+:::danger[危险]
+**部分配置项会直接影响本插件的关键行为，配置不得当的情况下很可能导致插件无法正常工作乃至崩溃。**  
+此类配置项已在对应的描述中添加了“⚠️”作为标识。除非你真的知道你在做什么，否则不要改动这些配置项目。
+:::
+
+<FileTree>
+  - plugins/hyperzonelogin/ HyperZoneLogin 插件数据目录
+    - data/ 数据库目录
+    - entry/ Yggdrasil 验证条目目录
+      - example/ 示例配置文件目录，不会被插件加载
+        - example.conf 示例配置文件
+      - elyby.conf Ely.by外置登录支持
+      - littleskin.conf Littleskin外置登录支持
+      - mojang.conf ⚠️正版登录支持
+    - libs/ 代码库目录
+    - merge/ 数据迁移目录
+      - merge-am.conf Authme 数据迁移配置
+      - merge-ml.conf Multilogin 数据迁移配置
+    - [backend-server.conf](../backend-server) 后端服务器配置
+    - [database.conf](../database) 数据库配置
+    - [messages.conf](../messages) 语言选择配置
+    - [misc.conf](../misc) 杂项配置
+    - [modules.conf](../modules) 模块配置
+    - [offline-auth.conf](../offline-auth) 离线验证模块配置
+    - [offlinematch.conf](../oflinematch) 离线玩家匹配配置
+    - [profile-skin.conf](../profile-skin) 皮肤缓存与恢复模块配置
+    - [remap.conf](../remap) ⚠️UUID重映射配置
+    - [safe.conf](../safe) 安全防护模块配置
+</FileTree>

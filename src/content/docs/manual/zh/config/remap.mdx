@@ -1,0 +1,16 @@
+---
+title: "remap.conf"
+---
+
+import ConfigNode from "/src/components/ConfigNode.astro";
+import ThisConfigData from "/src/config/hzl-main/remap.yml?raw";
+import { parse } from "yaml";
+
+用于 UUID 映射时使用的配置。
+
+:::danger[危险]
+**此配置文件会直接影响本插件的关键行为，配置不得当的情况下很可能导致插件无法正常工作乃至崩溃。**  
+除非你真的知道你在做什么，否则不要改动这个配置文件。
+:::
+
+<ConfigNode data={parse(ThisConfigData)} />

@@ -1,0 +1,11 @@
+---
+title: "offline-auth.conf"
+---
+
+import ConfigNode from "/src/components/ConfigNode.astro";
+import ThisConfigData from "/src/config/auth-offline/offline-auth.yml?raw";
+import { parse } from "yaml";
+
+离线登录模块（`auth-offline`）的有关配置。
+
+<ConfigNode data={parse(ThisConfigData)} />

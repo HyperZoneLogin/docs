@@ -1,0 +1,112 @@
+auth-failure:
+  cooldown-seconds:
+    description: |-
+      触发后的冷却时长（秒）
+    default: 600
+  enabled:
+    description: |-
+      是否启用统一认证失败联动
+    default: true
+  trigger-attempts:
+    description: |-
+      同一 IP 在统计窗口内累计多少次认证失败后开始冷却
+    default: 4
+  window-seconds:
+    description: |-
+      认证失败统计窗口（秒）
+    default: 300
+enable:
+  description: |-
+    是否启用入口层防护
+  default: true
+global-rate-limit:
+  max-attempts:
+    description: |-
+      全局连接频率限制最大尝试次数
+    default: 80
+  window-seconds:
+    description: |-
+      全局连接频率限制统计窗口（秒）
+    default: 10
+ip-cooldown:
+  cooldown-seconds:
+    description: |-
+      触发后的冷却时长（秒）
+    default: 300
+  enabled:
+    description: |-
+      是否启用同 IP 临时冷却
+    default: true
+  trigger-attempts:
+    description: |-
+      在统计窗口内触发多少次限流后，开始临时封禁
+    default: 3
+  window-seconds:
+    description: |-
+      统计窗口长度（秒）
+    default: 60
+ip-rate-limit:
+  max-attempts:
+    description: |-
+      同 IP 连接频率限制最大尝试次数
+    default: 8
+  window-seconds:
+    description: |-
+      同 IP 连接频率限制统计窗口（秒）
+    default: 10
+strict-mode:
+  enabled:
+    description: |-
+      是否启用自动高峰防护模式
+    default: true
+  global-rate-limit:
+    max-attempts:
+      description: |-
+        strict mode 下的全局限流最大尝试次数
+      default: 30
+    window-seconds:
+      description: |-
+        strict mode 下的全局限流统计窗口（秒）
+      default: 10
+  ip-rate-limit:
+    max-attempts:
+      description: |-
+        strict mode 下的同 IP 连接频率限制最大尝试次数
+      default: 4
+    window-seconds:
+      description: |-
+        strict mode 下的同 IP 连接频率限制统计窗口（秒）
+      default: 10
+  recover-after-seconds:
+    description: |-
+      进入 strict mode 后，至少保持这么多秒
+    default: 90
+  trigger-attempts:
+    description: |-
+      全局连接请求在窗口内达到该次数后进入 strict mode
+    default: 120
+  window-seconds:
+    description: |-
+      strict mode 触发统计窗口（秒）
+    default: 15
+username:
+  deny-leading-or-trailing-whitespace:
+    description: |-
+      是否要求用户名不能包含首尾空白
+    default: true
+  enable:
+    description: |-
+      是否启用用户名基础校验
+    default: true
+  max-length:
+    description: |-
+      最长用户名长度
+    default: 16
+  min-length:
+    description: |-
+      最短用户名长度
+    default: 3
+  pattern:
+    description: |-
+      允许的用户名正则，默认与 Minecraft 传统用户名规则一致
+    default: "^[A-Za-z0-9_]+$"

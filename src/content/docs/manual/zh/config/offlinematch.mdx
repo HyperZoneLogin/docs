@@ -1,0 +1,11 @@
+---
+title: "offlinematch.conf"
+---
+
+import ConfigNode from "/src/components/ConfigNode.astro";
+import ThisConfigData from "/src/config/auth-offline/offlinematch.yml?raw";
+import { parse } from "yaml";
+
+离线玩家匹配规则的配置。在离线登录模块（`auth-offline`）激活时有效。
+
+<ConfigNode data={parse(ThisConfigData)} />
