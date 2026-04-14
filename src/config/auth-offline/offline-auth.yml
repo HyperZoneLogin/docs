@@ -75,7 +75,7 @@ email:
     ssl:
       description: |
         是否直接使用 SSL
-      default: false
+      default: "false"
     start-tls:
       description: |
         是否启用 STARTTLS
@@ -123,7 +123,7 @@ session:
   enabled:
     description: |
       是否启用短期会话自动登录
-    default: false
+    default: "false"
   expire-minutes:
     description: |
       会话有效期（分钟）
@@ -136,7 +136,7 @@ totp:
   allow-session-bypass:
     description: |
       当账号启用 TOTP 时，是否允许 short session 直接绕过二次验证
-    default: false
+    default: "false"
   enabled:
     description: |
       是否启用 TOTP 二步验证功能

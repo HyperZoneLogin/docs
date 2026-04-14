@@ -1,13 +1,15 @@
 advanced:
-  message: "暂无配置项。"
+  no-entry-notice:
+    color: gray
+    message: "暂无配置项。"
 enable:
   description: |-
     是否允许进行匹配
   default: true
 host-match:
   start:
-    description: ""
-    default: '['
+    description: Host 匹配的前缀列表
+    default: "[offline, o-]"
 uuid-match:
   offline:
     description: |-

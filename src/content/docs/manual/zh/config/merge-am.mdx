@@ -1,0 +1,11 @@
+---
+title: "merge-am.conf"
+---
+
+import ConfigNode from "/src/components/ConfigNode.astro";
+import ThisConfigData from "/src/config/data-merge/merge-am.yml?raw";
+import { parse } from "yaml";
+
+Authme 插件数据迁移配置文件。在`data-merge`模块激活时有效。
+
+<ConfigNode data={parse(ThisConfigData)} />

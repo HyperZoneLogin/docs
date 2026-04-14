@@ -38,4 +38,4 @@ restore-unsigned-textures:
 trusted-signed-texture-entries:
   description: |-
     仅这些 entryId 的 signed textures 会被直接信任，其他 entry 即使 signed 也会优先尝试修复
-  default: [mojang]
+  default: "[mojang]"

@@ -1,0 +1,48 @@
+source:
+  type:
+    description: |-
+      源库类型，支持 SQLITE 或 MYSQL
+    default: SQLITE
+  sqlite:
+    jdbc-url:
+      description: |-
+        ⚠️可选：直接指定 JDBC URL。留空时按 path + parameters 生成
+      default: ''
+    path:
+      description: |-
+        SQLite 文件路径（相对于插件数据目录）
+      default: merge/authme.db
+    parameters:
+      description: |-
+        ⚠️SQLite JDBC 附加参数
+      default: ''
+  mysql:
+    host:
+      description: |-
+        MySQL 地址
+      default: 127.0.0.1
+    port:
+      description: |-
+        MySQL 端口
+      default: 3306
+    database:
+      description: |-
+        数据库名
+      default: authme
+    username:
+      description: |-
+        用户名
+      default: root
+    password:
+      description: |-
+        密码
+      default: password
+    parameters:
+      description: |-
+        ⚠️JDBC 参数
+      default: useSSL=false&serverTimezone=UTC&characterEncoding=utf8
+tables:
+  auth-me-table:
+    description: |-
+      ⚠️AuthMe 数据表名
+    default: authme
