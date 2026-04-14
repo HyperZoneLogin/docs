@@ -80,20 +80,18 @@ export default defineConfig({
                     "manual/zh/config/remap",
                     "manual/zh/config/offline-auth",
                     "manual/zh/config/offlinematch",
+                    "manual/zh/config/yggd-entry",
                     "manual/zh/config/profile-skin",
-                    "manual/zh/config/safe"
+                    "manual/zh/config/safe",
+                    "manual/zh/config/merge-am",
+                    "manual/zh/config/merge-ml",
                   ],
                 }, 
                 "manual/zh/迁移数据",
                 "manual/zh/常见问题", 
                 "manual/zh/问题反馈"
               ],
-            },
-            {
-              label: "待补充",
-              collapsed: true,
-              items: ["manual/zh/需要补充"],
-            },
+            }
           ],
         },
         {

@@ -6,6 +6,6 @@ import ConfigNode from "/src/components/ConfigNode.astro";
 import ThisConfigData from "/src/config/auth-yggd/yggd-entry.yml?raw";
 import { parse } from "yaml";
 
-每个 Yggdrasil 服务都需要一个对应的条目配置文件，并将它们统一放到插件数据目录的`entry`目录下。注意`example`目录中的配置文件不会被读取。配置文件结构见下。配置在激活`auth-yggd`模块时有效。
+每个 Yggdrasil 服务都需要一个对应的条目配置文件，你需要将它们统一放到插件数据目录的`entry`目录下。注意`example`目录中的配置文件不会被读取。配置文件结构见下。配置在激活`auth-yggd`模块时有效。
 
 <ConfigNode data={parse(ThisConfigData)} />
