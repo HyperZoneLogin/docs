@@ -2,10 +2,13 @@
 title: "messages.conf"
 ---
 
-import ConfigNode from "/src/components/ConfigNode.astro";
-import ThisConfigData from "/src/config/hzl-main/messages.yml?raw";
-import { parse } from "yaml";
-
 插件消息的配置文件。具体消息文件位于插件数据目录下的`messages`文件夹，可分别编辑 en_us.conf / zh_cn.conf / ru_ru.conf，或创建新的消息文件。
 
-<ConfigNode data={parse(ThisConfigData)} />
+```hocon
+# 默认语言；当未启用客户端语言检测，或客户端语言没有对应语言文件时使用
+default-locale="zh_cn"
+# 消息缺失时的回退语言；建议始终保留 en_us 或 zh_cn 之一
+fallback-locale="en_us"
+# 是否优先尝试读取客户端语言（如 en_us / zh_cn / ru_ru）；若失败则回退 defaultLocale
+use-client-locale=true
+```

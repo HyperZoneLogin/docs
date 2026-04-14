@@ -2,10 +2,101 @@
 title: "offline-auth.conf"
 ---
 
-import ConfigNode from "/src/components/ConfigNode.astro";
-import ThisConfigData from "/src/config/auth-offline/offline-auth.yml?raw";
-import { parse } from "yaml";
-
 离线登录模块（`auth-offline`）的有关配置。
 
-<ConfigNode data={parse(ThisConfigData)} />
+```hocon
+# 邮箱与找回
+email {
+    # 恢复码投递模式：LOG 或 SMTP
+    delivery-mode=LOG
+    # 是否启用邮箱相关命令
+    enabled=true
+    # 单个恢复码允许输错次数
+    max-code-verify-attempts=3
+    # 恢复码有效期（分钟）
+    recovery-code-expire-minutes=15
+    # 恢复码长度
+    recovery-code-length=6
+    # 重复请求恢复邮件冷却（秒）
+    recovery-cooldown-seconds=120
+    # 恢复码校验成功后，允许修改密码的时间窗口（分钟）
+    reset-password-window-minutes=10
+    # 恢复邮件模板与 SMTP 配置
+    smtp {
+        # 是否启用 SMTP 认证
+        auth=true
+        # 连接超时（毫秒）
+        connection-timeout-millis=10000
+        # 发件人邮箱
+        from-address="noreply@example.com"
+        # 发件人名称
+        from-name=HyperZoneLogin
+        # SMTP 服务器地址
+        host="smtp.example.com"
+        # SMTP 密码或应用专用密码
+        password=change-me
+        # SMTP 端口
+        port=587
+        # 读取超时（毫秒）
+        read-timeout-millis=10000
+        # 恢复邮件正文，支持占位符：%server%（服务器地址）、%player%（玩家名）、%email%（邮件地址）、%code%（验证码）、%minutes%（有效期）。使用 \n 表示换行
+        recovery-body="你好，%player%。\\n\\n你在 %server% 请求了离线账号密码找回。\\n验证码：%code%\\n有效期：%minutes% 分钟\\n\\n如果不是你本人操作，请忽略这封邮件。"
+        # 恢复邮件主题，支持占位符：%server%（服务器地址）、%player%（玩家名）
+        recovery-subject="[%server%] 账号密码找回验证码"
+        # 邮件里显示的服务器名称
+        server-name=HyperZoneLogin
+        # 是否直接使用 SSL
+        ssl=false
+        # 是否启用 STARTTLS
+        start-tls=true
+        # SMTP 用户名
+        username="noreply@example.com"
+        # 写入超时（毫秒）
+        write-timeout-millis=10000
+    }
+}
+# 登录保护
+login {
+    # 触发锁定后的冷却秒数
+    block-seconds=300
+    # 连续输错多少次后临时锁定登录
+    max-attempts=5
+}
+# 密码规则
+password {
+    # 是否禁止密码中包含用户名
+    deny-name-in-password=true
+    # 最长密码长度
+    max-length=64
+    # 最短密码长度
+    min-length=6
+}
+# 提示
+prompt {
+    # 首次进入认证阶段时是否额外展示邮箱找回提示
+    show-recovery-hint=true
+}
+# 会话自动登录
+session {
+    # 是否把会话与玩家 IP 绑定
+    bind-ip=true
+    # 是否启用短期会话自动登录
+    enabled=false
+    # 会话有效期（分钟）
+    expire-minutes=30
+    # 注册成功后是否立刻签发会话
+    issue-on-register=true
+}
+# TOTP 二步验证
+totp {
+    # 当账号启用 TOTP 时，是否允许 short session 直接绕过二次验证
+    allow-session-bypass=false
+    # 是否启用 TOTP 二步验证功能
+    enabled=true
+    # 在验证器 App 中显示的发行方名称
+    issuer=HyperZoneLogin
+    # 待确认 TOTP 密钥的有效期（分钟）
+    pending-expire-minutes=10
+}
+
+```
