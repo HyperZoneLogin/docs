@@ -2,10 +2,32 @@
 title: "profile-skin.conf"
 ---
 
-import ConfigNode from "/src/components/ConfigNode.astro";
-import ThisConfigData from "/src/config/profile-skin/profile-skin.yml?raw";
-import { parse } from "yaml";
-
 指定玩家皮肤缓存的配置。
 
-<ConfigNode data={parse(ThisConfigData)} />
+```hocon
+# 是否启用 profile-skin 模块
+enabled=true
+# MineSkin 修复配置
+mine-skin {
+    # 生成方式：URL 或 UPLOAD
+    method=URL
+    # 当 URL 模式返回 remote fetch 类错误（例如 invalid_image / file size undefined）时，是否自动改用上传模式重试
+    retry-upload-on-url-read-failure=true
+    # 请求超时时间（毫秒）
+    timeout-millis=15000
+    # ⚠️上传模式接口地址
+    upload-endpoint="https://api.mineskin.org/generate/upload"
+    # ⚠️URL 模式接口地址
+    url-endpoint="https://api.mineskin.org/generate/url"
+    # HTTP User-Agent
+    user-agent="HyperZoneLogin/1.0"
+}
+# 是否优先缓存并使用上游已经携带签名的 textures
+prefer-upstream-signed-textures=true
+# 当上游 textures 没有签名时，是否尝试通过 MineSkin 修复
+restore-unsigned-textures=true
+# 仅这些 entryId 的 signed textures 会被直接信任，其他 entry 即使 signed 也会优先尝试修复
+trusted-signed-texture-entries=[
+    mojang
+]
+```

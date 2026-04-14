@@ -2,10 +2,6 @@
 title: "remap.conf"
 ---
 
-import ConfigNode from "/src/components/ConfigNode.astro";
-import ThisConfigData from "/src/config/hzl-main/remap.yml?raw";
-import { parse } from "yaml";
-
 用于 UUID 映射时使用的配置。
 
 :::danger[危险]
@@ -13,4 +9,7 @@ import { parse } from "yaml";
 除非你真的知道你在做什么，否则不要改动这个配置文件。
 :::
 
-<ConfigNode data={parse(ThisConfigData)} />
+```hocon
+# ⚠️生成UUID时的前缀，如果是OfflinePlayer则为离线生成方式
+prefix=HyperZone
+```
