@@ -49,7 +49,8 @@ tables {
 service-id-mapping {
     "1"=mojang
 }
-
+# Floodgate 服务 ID。此服务中的用户数据将会被迁移至 HyperZoneLogin 的 Floodgate 数据表中。
+floodgate-service-ids=[]
 ```
 
 ## 服务ID映射配置
