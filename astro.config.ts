@@ -82,6 +82,7 @@ export default defineConfig({
                     "manual/zh/config/merge-ml",
                   ],
                 },
+                "manual/zh/命令列表",
                 "manual/zh/迁移数据",
                 "manual/zh/常见问题",
                 "manual/zh/问题反馈",
