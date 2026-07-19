@@ -134,8 +134,7 @@ v-server {
         enable-uuid-hot-change=false
     }
     outpre {
-        # 认证服的逻辑名，仅用于日志/状态标识；不需要在 Velocity 的 servers 中注册。
-        # 如果使用 ViaVersion，你需要在 Velocity 的 servers 中添加注册条目，如 outpre-auth = "127.0.0.1:30066"，但不需要将其配置到 try 队列。
+        # 认证服的逻辑名，仅用于日志/状态标识；会自动在 Velocity 的 servers 中注册。
         auth-label=outpre-auth
         # ❇️认证服的直连地址
         auth-host="127.0.0.1"
