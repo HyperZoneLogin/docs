@@ -112,13 +112,13 @@ modules {
     profile-skin=true
     # 数据迁移
     data-merge=false
+    # 内置 NanoLimbo 后端；仅在 vServer.mode 为 outpre 时用于拉起本地认证等待服
+    backend-nanolimbo=true
 }
 # 等待区服务器
 v-server {
     # 登录服实现模式：backend 或 outpre。推荐 outpre 模式，若有问题请使用backend模式。
     mode=outpre
-    # ❇️认证完成后默认进入的服务器
-    post-auth-default-server=play
     # 记住认证时收到的服务器跳转请求
     remember-requested-server-during-auth=true
     backend {
@@ -130,7 +130,7 @@ v-server {
         enable-profile-compensation=true
         # 在线热改 name（风险较低，默认开启）
         enable-name-hot-change=true
-        # 在线热改 UUID（高风险，默认关闭）
+        # ⚠️在线热改 UUID（高风险，默认关闭）
         enable-uuid-hot-change=false
     }
     outpre {
@@ -146,7 +146,17 @@ v-server {
         presented-port=-1
         # 转接给认证服时，在连接握手中对后端暴露的玩家源 IP；留空时使用玩家真实 IP
         presented-player-ip=""
+        # 对在线模式玩家（Velocity 已完成 Mojang 验证）启用直通（struck）模式：
+        # 玩家连入时阻塞等待认证完成，通过后直接进入游戏，跳过等待区。
+        struck-online-mode=true
     }
+}
+# 认证行为配置
+auth {
+    # ⚠️禁止通过以下渠道进行新档案注册（建档）的凭证渠道 ID 列表。
+    # 填入渠道 ID（如 offline、yggdrasil、floodgate）后，该渠道的凭证将无法用于创建新玩家档案。
+    # 已有档案的登录不受影响。
+    disable-registration=[]
 }
 # 消息
 messages {

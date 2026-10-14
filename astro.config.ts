@@ -80,6 +80,7 @@ export default defineConfig({
                     "manual/zh/config/safe",
                     "manual/zh/config/merge-am",
                     "manual/zh/config/merge-ml",
+                    "manual/zh/config/nanolimbo-settings",
                   ],
                 },
                 "manual/zh/命令列表",
