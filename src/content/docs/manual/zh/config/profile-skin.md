@@ -5,8 +5,6 @@ title: "profile-skin.conf"
 玩家皮肤缓存模块配置。在模块`profile-skin`激活时有效。
 
 ```hocon
-# 启用本模块
-enabled=true
 # 优先缓存并已携带签名的材质
 prefer-upstream-signed-textures=true
 # 不修复的入口ID

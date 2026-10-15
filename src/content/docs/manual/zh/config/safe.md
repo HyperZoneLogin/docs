@@ -6,8 +6,6 @@ slug: "manual/zh/config/safe"
 基础安全模块（`safe`）的配置。
 
 ```hocon
-# 启用防护
-enable=true
 # 全局连接频率限制
 global-rate-limit {
     max-attempts=80
@@ -17,6 +15,13 @@ global-rate-limit {
 ip-rate-limit {
     max-attempts=8
     window-seconds=10
+}
+# 同 IP 连接玩家数量限制
+ip-limit {
+    # 是否开启？
+    enable=true
+    # 玩家数量上限
+    max=3
 }
 # 同 IP 超阈值后的临时冷却
 ip-cooldown {
